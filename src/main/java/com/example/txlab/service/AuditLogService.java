@@ -20,7 +20,7 @@ public class AuditLogService {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void record(TxTrace trace, String message) {
-        trace.record("inner-requires-new", probe.currentBackendPid());
+        trace.record("inner-requires-new", probe.currentConnectionId());
         auditLogRepository.save(new AuditLog(message));
     }
 }

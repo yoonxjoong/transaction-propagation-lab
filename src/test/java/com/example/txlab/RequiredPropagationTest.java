@@ -47,9 +47,9 @@ class RequiredPropagationTest {
         requiredOrderService.placeOrder(trace, false);
 
         assertThat(orderRepository.count()).isEqualTo(1);
-        int outerBefore = trace.pidOf("outer-before");
-        int innerRequired = trace.pidOf("inner-required");
-        int outerAfter = trace.pidOf("outer-after");
+        long outerBefore = trace.pidOf("outer-before");
+        long innerRequired = trace.pidOf("inner-required");
+        long outerAfter = trace.pidOf("outer-after");
         assertThat(innerRequired).as("REQUIRED로 참여한 자식은 부모와 같은 커넥션 pid를 써야 한다").isEqualTo(outerBefore);
         assertThat(outerAfter).as("자식 호출 이후에도 부모는 같은 커넥션을 그대로 쓴다").isEqualTo(outerBefore);
     }

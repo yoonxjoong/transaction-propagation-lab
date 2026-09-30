@@ -22,10 +22,10 @@ public class RequiresNewOrderService {
 
     @Transactional // REQUIRED (기본값)
     public void placeOrder(TxTrace trace, boolean failAfterAudit) {
-        trace.record("outer-before", probe.currentBackendPid());
+        trace.record("outer-before", probe.currentConnectionId());
         orderRepository.save(new Order("requires-new-demo"));
         auditLogService.record(trace, "placeOrder attempted"); // REQUIRES_NEW
-        trace.record("outer-after", probe.currentBackendPid());
+        trace.record("outer-after", probe.currentConnectionId());
         if (failAfterAudit) {
             throw new IllegalStateException("주문 처리 중 실패");
         }

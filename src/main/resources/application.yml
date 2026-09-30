@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5439/txlab
+    url: jdbc:mysql://localhost:3316/txlab?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: txlab
     password: txlab
   jpa:

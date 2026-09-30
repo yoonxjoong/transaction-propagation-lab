@@ -51,9 +51,9 @@ class RequiresNewPropagationTest {
 
         requiresNewOrderService.placeOrder(trace, false);
 
-        int outerBefore = trace.pidOf("outer-before");
-        int innerRequiresNew = trace.pidOf("inner-requires-new");
-        int outerAfter = trace.pidOf("outer-after");
+        long outerBefore = trace.pidOf("outer-before");
+        long innerRequiresNew = trace.pidOf("inner-requires-new");
+        long outerAfter = trace.pidOf("outer-after");
 
         assertThat(innerRequiresNew)
                 .as("REQUIRES_NEW는 부모 커넥션을 suspend하고 별도 물리 커넥션을 써야 한다")

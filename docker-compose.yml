@@ -1,10 +1,11 @@
 version: '3.8'
 services:
-  postgres:
-    image: postgres:16
+  mysql:
+    image: mysql:8.0
     environment:
-      POSTGRES_DB: txlab
-      POSTGRES_USER: txlab
-      POSTGRES_PASSWORD: txlab
+      MYSQL_DATABASE: txlab
+      MYSQL_USER: txlab
+      MYSQL_PASSWORD: txlab
+      MYSQL_ROOT_PASSWORD: txlab
     ports:
-      - "5439:5432"
+      - "3316:3306"

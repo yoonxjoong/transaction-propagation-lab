@@ -14,7 +14,7 @@ public class InventoryService {
 
     @Transactional // REQUIRED (기본값)
     public void decreaseStock(TxTrace trace, boolean fail) {
-        trace.record("inner-required", probe.currentBackendPid());
+        trace.record("inner-required", probe.currentConnectionId());
         if (fail) {
             throw new IllegalStateException("재고 부족");
         }

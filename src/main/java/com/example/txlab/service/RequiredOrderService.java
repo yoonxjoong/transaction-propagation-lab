@@ -22,9 +22,9 @@ public class RequiredOrderService {
 
     @Transactional // REQUIRED (기본값)
     public void placeOrder(TxTrace trace, boolean failInInventory) {
-        trace.record("outer-before", probe.currentBackendPid());
+        trace.record("outer-before", probe.currentConnectionId());
         orderRepository.save(new Order("required-demo"));
         inventoryService.decreaseStock(trace, failInInventory);
-        trace.record("outer-after", probe.currentBackendPid());
+        trace.record("outer-after", probe.currentConnectionId());
     }
 }

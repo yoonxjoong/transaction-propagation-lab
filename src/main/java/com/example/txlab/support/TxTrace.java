@@ -11,19 +11,19 @@ public class TxTrace {
 
     private final List<String> events = new ArrayList<>();
 
-    public void record(String label, int pid) {
-        events.add(label + "=" + pid);
+    public void record(String label, long connectionId) {
+        events.add(label + "=" + connectionId);
     }
 
     public List<String> events() {
         return events;
     }
 
-    public Integer pidOf(String label) {
+    public Long pidOf(String label) {
         for (String event : events) {
             String[] parts = event.split("=");
             if (parts[0].equals(label)) {
-                return Integer.valueOf(parts[1]);
+                return Long.valueOf(parts[1]);
             }
         }
         throw new IllegalArgumentException("no such event recorded: " + label);
